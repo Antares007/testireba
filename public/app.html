@@ -1,0 +1,59 @@
+<link rel="import" href="components/polymer/polymer.html">
+<link rel="import" href="components/topeka-elements/theme.html">
+<link rel="import" href="components/topeka-elements/topeka-resources.html">
+<link rel="import" href="components/topeka-elements/topeka-category.html">
+
+<polymer-element name="my-app" attributes="wide">
+  <template>
+    <style>    
+      :host {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+      }
+      #topeka_category {
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+      }
+    </style>
+    <topeka-category wide="{{wide}}" id="topeka_category" name="category" user="{{user}}" category="{{category}}" allscores="{{allScores}}"></topeka-category>
+  </template>
+
+  <script>
+    Polymer((function(){
+      var categoryDb = function(name){
+      	return JSON.parse('{"name":"General Knowledge","id":"knowledge","theme":"blue","quizzes":[{"type":"fill-blank","question":"Mole is a popular paste in Mexico. Mole is a mixture of chili’s and what other tasty ingredient?","answer":"Chocolate"},{"type":"four-quarter","question":"What is the name of the famous art deco skyscraper in New York City?","options":["Trump Tower","Chrysler building","Empire State Building","The New York Times Building"],"answer":[1]},{"type":"multi-select","question":"Select the names of “The Three Musketeers”.","options":["Chevy","Topeka","Athos","Duke","Porthos","John Felton","Aramis"],"answer":[2,4,6]},{"type":"toggle-translate","question":"Which is the correct translation of Zorro?","options":[["Zorro","Dog"],["Zorro","Sword"],["Zorro","Fox"],["Zorro","Coyote"]],"answer":[2]},{"type":"single-select-item","question":"Which 1971 film, known for its violence, was the first to use Dolby sound?","options":["Straw Dogs","Dirty Harry","A Clockwork Orange","Play Misty for me"],"answer":[2]},{"type":"picker","question":"How many counters does a backgammon player have?","min":0,"max":30,"answer":15},{"type":"true-false","question":"There is a patron saint of The Internet.","answer":true},{"type":"alpha-picker","question":" Which letter other than X scores 8 in Scrabble?","answer":"J"},{"type":"four-quarter","question":"Four of the worst ten maritime disasters all took place in 1945. In which sea were all four ships sunk?","options":["Mediterranean sea","Baltic Sea","The Bermuda Triangle","Black Sea"],"answer":[1]},{"type":"single-select","question":"What nut is used to flavor marzipan?","options":["Walnut","Almond","Cashew","Pistachio"],"answer":[1]}]}');
+      } 
+      var allScoresDb = function(name){
+      	return JSON.parse('{"undefined":[],"General Knowledge":[],"Food & Drink":[0],"Science and Nature":[],"TV & Movies":[],"History":[0,0],"Entertainment":[],"Sports":[],"Music":[],"General Knowledge":[]}');
+      } 
+      
+          
+      
+      return {
+        user : JSON.parse('{"name":"ტესტირება","avatar":1,"score":0}'),
+        category : categoryDb('ზოგადი ცოდნა'),
+        allScores : allScoresDb(),
+        wide: true,
+        eventDelegates: {
+          'main': 'showCategories',
+          'score-update': 'computeScore'
+        },
+        showCategories:function(){
+          this.category = categoryDb('ზოგადი ცოდნა');
+          this.allScores = allScoresDb();
+          console.log('showCategories');
+        },
+        computeScore:function(){
+          console.log('computeScore');
+        }
+      }
+    
+    })());
+
+  </script>
+</polymer-element>

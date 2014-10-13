@@ -1,0 +1,23 @@
+{
+  "name": "testireba",
+  "version": "0.0.0",
+  "authors": [
+    "Archil Bolkvadze <a.bolkvadze@gmail.com>"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.4.2",
+    "core-elements": "Polymer/core-elements#~0.4.2",
+    "topeka": "Polymer/topeka#~0.4.0"
+  }
+}
