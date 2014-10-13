@@ -2,7 +2,7 @@
 <link rel="import" href="components/topeka-elements/theme.html">
 <link rel="import" href="components/topeka-elements/topeka-resources.html">
 <link rel="import" href="components/topeka-elements/topeka-category.html">
-
+<link rel="import" href="components/core-media-query/core-media-query.html" />
 <polymer-element name="my-app" attributes="wide">
   <template>
     <style>    
@@ -21,6 +21,7 @@
       }
     </style>
     <topeka-category wide="{{wide}}" id="topeka_category" name="category" user="{{user}}" category="{{category}}" allscores="{{allScores}}"></topeka-category>
+    <core-media-query query="{{query}}" queryMatches="{{wide}}"></core-media-query>      
   </template>
 
   <script>
@@ -35,6 +36,7 @@
           
       
       return {
+        query: 'min-width: 900px',
         user : JSON.parse('{"name":"ტესტირება","avatar":1,"score":0}'),
         category : categoryDb('ზოგადი ცოდნა'),
         allScores : allScoresDb(),
