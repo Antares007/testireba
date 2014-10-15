@@ -28,8 +28,29 @@
     Polymer((function(){
       var categoryDb = function(name){
       	var data = JSON.parse('{"name":"General Knowledge","id":"knowledge","theme":"blue","quizzes":[{"type":"fill-blank","question":"Mole is a popular paste in Mexico. Mole is a mixture of chili’s and what other tasty ingredient?","answer":"Chocolate"},{"type":"four-quarter","question":"What is the name of the famous art deco skyscraper in New York City?","options":["Trump Tower","Chrysler building","Empire State Building","The New York Times Building"],"answer":[1]},{"type":"multi-select","question":"Select the names of “The Three Musketeers”.","options":["Chevy","Topeka","Athos","Duke","Porthos","John Felton","Aramis"],"answer":[2,4,6]},{"type":"toggle-translate","question":"Which is the correct translation of Zorro?","options":[["Zorro","Dog"],["Zorro","Sword"],["Zorro","Fox"],["Zorro","Coyote"]],"answer":[2]},{"type":"single-select-item","question":"Which 1971 film, known for its violence, was the first to use Dolby sound?","options":["Straw Dogs","Dirty Harry","A Clockwork Orange","Play Misty for me"],"answer":[2]},{"type":"picker","question":"How many counters does a backgammon player have?","min":0,"max":30,"answer":15},{"type":"true-false","question":"There is a patron saint of The Internet.","answer":true},{"type":"alpha-picker","question":" Which letter other than X scores 8 in Scrabble?","answer":"J"},{"type":"four-quarter","question":"Four of the worst ten maritime disasters all took place in 1945. In which sea were all four ships sunk?","options":["Mediterranean sea","Baltic Sea","The Bermuda Triangle","Black Sea"],"answer":[1]},{"type":"single-select","question":"What nut is used to flavor marzipan?","options":["Walnut","Almond","Cashew","Pistachio"],"answer":[1]}]}');
+        data.quizzes = [
+          ['მსოფლიოს რამდენ ქვეყანაშია წარმოდგენილი ,,ბატა’’?','70','50','40','30'],
+          ['რომელ წელს დაარსდა ბატა?','1894','1914','1820','1990'],
+          ['სადაური ბრენდია ეკკო?','დანიური','გერმანული','იტალიური','ჩინური'],
+          ['რომელ წელს დაარსდა ეკკო?','1970','1900','1800','1850'],
+          ['როდის გაიხსნა სკეჩერსის მაღაზია თბილისში?', '2014 წლის მაისში','2013 აპრილი', '2014 წლის თებერვალი', '2012 წლის მაისში'],
+          ['რამდნი მაღაზია აქვს სკეჩერს თბილისში?', '3', '4', '6', '8'],
+          ['სადაური ბრენდია ტამარისი?', 'გერმანული', 'იტალიური',  'დანიური', 'ჩინური'],
+          ['რომელი წლიდან არსებობს ტამარისი?',  '1967',  '1800',  '1900',  '2000'],
+          ['სადაური ბრენდია ჯეოქსი?','იტალიური', 'გერმანული', 'ჩინური', 'ფრანგული'],
+          ['სად მდებარეობს ბამბინოს მაღაზია თბილისში?','ჭავჭავაძის 33', 'პეკინის 14',  'ვაჟა-ფშაველას 2', 'აღმაშენებლის 5']
+        ].map(function(x){
+          var opts = [x[1],x[2],x[3],x[4]]
+            .map(function(x){return {q:x,s:Math.random()}})
+            .sort(function(a,b){return a.s>b.s})
+            .map(function(x){return x.q});
+          var answer = x[1];
+          return {type:'four-quarter',question:x[0],options:opts,answer:[opts.indexOf(answer)]}
+        });
         data.quizzes.forEach(function(q){q.point=1});
-        console.log(data);
+       
+        
+       
         return data;
       } 
       var allScoresDb = function(name){
@@ -62,3 +83,4 @@
 
   </script>
 </polymer-element>
+
