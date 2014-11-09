@@ -5,7 +5,7 @@
 <link rel="import" href="components/core-media-query/core-media-query.html" />
 <polymer-element name="my-app" attributes="wide">
   <template>
-    <style>    
+    <style>
       :host {
         position: absolute;
         width: 100%;
@@ -20,19 +20,19 @@
         position: absolute;
       }
     </style>
-    <topeka-category wide="{{wide}}" id="topeka_category" name="category" user="{{user}}" category="{{category}}" allscores="{{allScores}}"></topeka-category>
-    <core-media-query query="{{query}}" queryMatches="{{wide}}"></core-media-query>      
+    <topeka-category wide="{{wide}}" id="topeka_category" name="category" user="{{user}}"
+                     category="{{category}}" allscores="{{allScores}}"></topeka-category>
+    <core-media-query query="{{query}}" queryMatches="{{wide}}"></core-media-query>
   </template>
-
   <script>
     Polymer((function(){
       var shuffle = function(arr){
         return arr.map(function(x){return {q:x,s:Math.random()}})
-            .sort(function(a,b){return a.s>b.s})
-            .map(function(x){return x.q})
-      }
+          .sort(function(a,b){return a.s>b.s})
+          .map(function(x){return x.q})
+      };
       var categoryDb = function(name){
-      	var data = JSON.parse('{"name":"General Knowledge","id":"knowledge","theme":"yellow","quizzes":[{"type":"fill-blank","question":"Mole is a popular paste in Mexico. Mole is a mixture of chili’s and what other tasty ingredient?","answer":"Chocolate"},{"type":"four-quarter","question":"What is the name of the famous art deco skyscraper in New York City?","options":["Trump Tower","Chrysler building","Empire State Building","The New York Times Building"],"answer":[1]},{"type":"multi-select","question":"Select the names of “The Three Musketeers”.","options":["Chevy","Topeka","Athos","Duke","Porthos","John Felton","Aramis"],"answer":[2,4,6]},{"type":"toggle-translate","question":"Which is the correct translation of Zorro?","options":[["Zorro","Dog"],["Zorro","Sword"],["Zorro","Fox"],["Zorro","Coyote"]],"answer":[2]},{"type":"single-select-item","question":"Which 1971 film, known for its violence, was the first to use Dolby sound?","options":["Straw Dogs","Dirty Harry","A Clockwork Orange","Play Misty for me"],"answer":[2]},{"type":"picker","question":"How many counters does a backgammon player have?","min":0,"max":30,"answer":15},{"type":"true-false","question":"There is a patron saint of The Internet.","answer":true},{"type":"alpha-picker","question":" Which letter other than X scores 8 in Scrabble?","answer":"J"},{"type":"four-quarter","question":"Four of the worst ten maritime disasters all took place in 1945. In which sea were all four ships sunk?","options":["Mediterranean sea","Baltic Sea","The Bermuda Triangle","Black Sea"],"answer":[1]},{"type":"single-select","question":"What nut is used to flavor marzipan?","options":["Walnut","Almond","Cashew","Pistachio"],"answer":[1]}]}');
+        var data = JSON.parse('{"name":"General Knowledge","id":"knowledge","theme":"yellow","quizzes":[]}');
         data.quizzes = [
           ['მსოფლიოს რამდენ ქვეყანაშია წარმოდგენილი ,,ბატა’’?','70','50','40','30'],
           ['რომელ წელს დაარსდა ბატა?','1894','1914','1820','1990'],
@@ -50,18 +50,12 @@
           return {type:'four-quarter',question:x[0],options:opts,answer:[opts.indexOf(answer)]}
         });
         data.quizzes = shuffle(data.quizzes);
-        data.quizzes.forEach(function(q){q.point=1});
-       
-        
-       
+        data.quizzes.forEach(function(q){ q.point=1; });
         return data;
-      } 
+      }
       var allScoresDb = function(name){
-      	return JSON.parse('{"undefined":[],"General Knowledge":[],"Food & Drink":[0],"Science and Nature":[],"TV & Movies":[],"History":[0,0],"Entertainment":[],"Sports":[],"Music":[],"General Knowledge":[]}');
-      } 
-      
-          
-      
+        return JSON.parse('{"undefined":[],"General Knowledge":[],"Food & Drink":[0],"Science and Nature":[],"TV & Movies":[],"History":[0,0],"Entertainment":[],"Sports":[],"Music":[],"General Knowledge":[]}');
+      }
       return {
         query: 'min-width: 900px',
         user : JSON.parse('{"name":"ტესტირება","avatar":1,"score":0}'),
@@ -80,10 +74,7 @@
         computeScore:function(){
           console.log('computeScore');
         }
-      }
-    
+      };
     })());
-
-  </script>
+    </script>
 </polymer-element>
-

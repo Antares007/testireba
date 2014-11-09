@@ -127,6 +127,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     
     quizDone: function() {
       var s = this.quizView.getScore();
+      var q = this.quiz;
+      var answer = q.answer.map(function(a){return q.options[a];}).join('\n');
       if (s > 0) {
         this.icon = 'social:mood';
       } else {
@@ -135,7 +137,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       this.scores[this.index] = s;
 
       this.async(function() {
-        this.fire('quiz-done', {score: s});
+        this.fire('quiz-done', {score: s, answer: answer});
       }, null, parseInt(CoreStyle.g.transitions.duration));
     },
     
