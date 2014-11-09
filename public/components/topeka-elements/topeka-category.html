@@ -23,8 +23,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="stylesheet" href="topeka-category-themes.css">
   
   <div class="{{category.theme}}-theme theme-bg-a {{ {wide: wide} | tokenList }}" dummy fit layout vertical center center-justified hero-id="punch" hero>
+    <div style="background:#ce181e" fit horizontal layout>
+      <div vertical layout style="height:100%">
+        <div flex></div>
+        <img src="images/l.jpg" alt="Mountain View" style="width:325px;height:400px">
+      </div>
+      <div flex></div>
+      <div vertical layout style="height:100%">
+        <div flex></div>
+        <img src="images/r.jpg" alt="Mountain View" style="width:325px;height:400px">
+      </div>
+    </div>
     <div class="category-bg" relative?="{{wide}}" flex?="{{!wide}}">
-      <core-icon icon="category-images:{{category.id}}" cross-fade-delayed?="{{parentElement.selected === 'category'}}" cross-fade="{{parentElement.selected !== 'category'}}" fit></core-icon>
+      <!-- <core-icon icon="category-images:{{category.id}}" cross-fade-delayed?="{{parentElement.selected === 'category'}}" cross-fade="{{parentElement.selected !== 'category'}}" fit></core-icon> -->
     </div>
   </div>
   
